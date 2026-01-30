@@ -93,11 +93,11 @@ h1 {
   background: var(--red);
   border: none;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition: transform 0.1s ease, background 0.2s ease;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 .btn.secondary {
@@ -157,9 +157,9 @@ h1 {
         KSL Season 1
       </button>
 
-      <button class="btn secondary" onclick="showCreators()">
+      <a class="btn secondary" href="creators.html">
         CREATORS
-      </button>
+      </a>
     </div>
 
     <div class="footer">
@@ -169,9 +169,10 @@ h1 {
   </div>
 </div>
 
-<!-- POPUPS -->
-<div id="kslPopup" class="popup">Registration not started</div>
-<div id="creatorsPopup" class="popup">under development</div>
+<!-- POPUP -->
+<div id="kslPopup" class="popup">
+  Registration not started
+</div>
 
 <script>
 function showKSL() {
@@ -179,14 +180,7 @@ function showKSL() {
   p.classList.add("show");
   setTimeout(() => p.classList.remove("show"), 3000);
 }
-
-function showCreators() {
-  const p = document.getElementById("creatorsPopup");
-  p.classList.add("show");
-  setTimeout(() => p.classList.remove("show"), 3000);
-}
 </script>
 
 </body>
 </html>
-
