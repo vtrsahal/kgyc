@@ -1,168 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>KGYC Official — Coming Soon</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>KGYC — Official</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+<style>
+:root {
+  --red: #d40000;
+  --black: #0a0a0a;
+  --gray: #9a9a9a;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #1a1a1a 0%, #000 75%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      color: #fff;
-    }
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .container {
-      width: 100%;
-      max-width: 360px;
-      padding: 36px 24px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 22px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 45px rgba(255, 0, 0, 0.18);
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+  font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .logo {
-      width: 160px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 22px rgba(255, 0, 0, 0.65));
-    }
+.wrapper {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 22px;
+}
 
-    h1 {
-      margin: 8px 0 6px;
-      font-size: 2rem;
-      letter-spacing: 2px;
-    }
+.card {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 34px 26px;
+  text-align: center;
+}
 
-    p {
-      margin: 0 0 18px;
-      font-size: 0.95rem;
-      opacity: 0.85;
-      line-height: 1.6;
-    }
+.logo {
+  width: 130px;
+  margin-bottom: 16px;
+}
 
-    .status {
-      font-weight: 600;
-      margin-bottom: 26px;
-      letter-spacing: 1px;
-    }
+h1 {
+  font-size: 1.9rem;
+  letter-spacing: 3px;
+  margin: 6px 0;
+}
 
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 15px 0;
-      margin-bottom: 14px;
-      border-radius: 50px;
-      text-decoration: none;
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      background: linear-gradient(135deg, #ff0033, #b30000);
-      box-shadow: 0 0 22px rgba(255, 0, 0, 0.65);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
 
-    .btn:active {
-      transform: scale(0.97);
-    }
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--red);
+  margin: 0 auto 26px;
+}
 
-    .btn.secondary {
-      background: linear-gradient(135deg, #3a3a3a, #111);
-      box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
-    }
+.status {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  margin-bottom: 26px;
+}
 
-    .tag {
-      margin-top: 22px;
-      font-size: 0.75rem;
-      opacity: 0.5;
-      letter-spacing: 0.5px;
-    }
+/* BUTTONS */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
-    /* POPUP */
-    .popup {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: rgba(18, 18, 18, 0.95);
-      padding: 14px 26px;
-      border-radius: 14px;
-      font-size: 0.9rem;
-      box-shadow: 0 0 26px rgba(255, 0, 0, 0.45);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
+.btn {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
 
-    .popup.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-  </style>
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.footer {
+  margin-top: 22px;
+  font-size: 0.75rem;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  border-left: 4px solid var(--red);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.popup.show {
+  opacity: 1;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="wrapper">
+  <div class="card">
+
     <img src="kgyc.jpg" alt="KGYC Logo" class="logo">
 
     <h1>KGYC</h1>
+    <div class="subtitle">Kerala Gaming YouTubers Community</div>
 
-    <p>Kerala Gaming YouTubers Community</p>
+    <div class="divider"></div>
 
-    <div class="status">COMING SOON</div>
+    <div class="status">OFFICIAL LAUNCH SOON</div>
 
-    <a class="btn" href="https://instagram.com/kgyc.official" target="_blank">
-      Follow on Instagram
-    </a>
+    <div class="buttons">
+      <a class="btn" href="https://instagram.com/kgyc.official" target="_blank">
+        Follow on Instagram
+      </a>
 
-    <a class="btn secondary" href="#" onclick="showKSLPopup()">
-      KSL Season 1
-    </a>
+      <button class="btn secondary" onclick="showKSL()">
+        KSL Season 1
+      </button>
 
-    <a class="btn secondary" href="#" onclick="showCreatorsPopup()">
-      CREATORS
-    </a>
+      <button class="btn secondary" onclick="showCreators()">
+        Creators Hub
+      </button>
+    </div>
 
-    <div class="tag">
+    <div class="footer">
       powered by youtubers of kerala
     </div>
+
   </div>
+</div>
 
-  <!-- POPUPS -->
-  <div id="kslPopup" class="popup">
-    Registration not started
-  </div>
+<!-- POPUPS -->
+<div id="kslPopup" class="popup">Registration not started</div>
+<div id="creatorsPopup" class="popup">Creators Hub coming soon</div>
 
-  <div id="creatorsPopup" class="popup">
-    Under Development
-  </div>
+<script>
+function showKSL() {
+  const p = document.getElementById("kslPopup");
+  p.classList.add("show");
+  setTimeout(() => p.classList.remove("show"), 3000);
+}
 
-  <script>
-    function showKSLPopup() {
-      const popup = document.getElementById("kslPopup");
-      popup.classList.add("show");
-      setTimeout(() => popup.classList.remove("show"), 3000);
-    }
-
-    function showCreatorsPopup() {
-      const popup = document.getElementById("creatorsPopup");
-      popup.classList.add("show");
-      setTimeout(() => popup.classList.remove("show"), 3000);
-    }
-  </script>
+function showCreators() {
+  const p = document.getElementById("creatorsPopup");
+  p.classList.add("show");
+  setTimeout(() => p.classList.remove("show"), 3000);
+}
+</script>
 
 </body>
 </html>
+
