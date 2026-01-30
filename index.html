@@ -120,9 +120,7 @@
 
     <h1>KGYC</h1>
 
-    <p>
-      Kerala Gaming YouTubers Community
-    </p>
+    <p>Kerala Gaming YouTubers Community</p>
 
     <div class="status">COMING SOON</div>
 
@@ -130,8 +128,12 @@
       Follow on Instagram
     </a>
 
-    <a class="btn secondary" href="#" onclick="showPopup()">
+    <a class="btn secondary" href="#" onclick="showKSLPopup()">
       KSL Season 1
+    </a>
+
+    <a class="btn secondary" href="#" onclick="showCreatorsPopup()">
+      Creators
     </a>
 
     <div class="tag">
@@ -139,19 +141,26 @@
     </div>
   </div>
 
-  <!-- POPUP -->
-  <div id="popup" class="popup">
+  <!-- POPUPS -->
+  <div id="kslPopup" class="popup">
     Registration not started
   </div>
 
-  <script>
-    function showPopup() {
-      const popup = document.getElementById("popup");
-      popup.classList.add("show");
+  <div id="creatorsPopup" class="popup">
+    Working in progress
+  </div>
 
-      setTimeout(() => {
-        popup.classList.remove("show");
-      }, 3000);
+  <script>
+    function showKSLPopup() {
+      const popup = document.getElementById("kslPopup");
+      popup.classList.add("show");
+      setTimeout(() => popup.classList.remove("show"), 3000);
+    }
+
+    function showCreatorsPopup() {
+      const popup = document.getElementById("creatorsPopup");
+      popup.classList.add("show");
+      setTimeout(() => popup.classList.remove("show"), 3000);
     }
   </script>
 
