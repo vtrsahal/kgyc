@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KGYC Official — Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1a1a1a 0%, #000 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      color: #fff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 360px;
+      padding: 36px 24px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 0 45px rgba(255, 0, 0, 0.18);
+    }
+
+    .logo {
+      width: 160px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 22px rgba(255, 0, 0, 0.65));
+    }
+
+    h1 {
+      margin: 8px 0 6px;
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+
+    p {
+      margin: 0 0 18px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    .status {
+      font-weight: 600;
+      margin-bottom: 26px;
+      letter-spacing: 1px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 15px 0;
+      margin-bottom: 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #ff0033, #b30000);
+      box-shadow: 0 0 22px rgba(255, 0, 0, 0.65);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn.secondary {
+      background: linear-gradient(135deg, #3a3a3a, #111);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
+    }
+
+    .tag {
+      margin-top: 22px;
+      font-size: 0.75rem;
+      opacity: 0.5;
+      letter-spacing: 0.5px;
+    }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(18, 18, 18, 0.95);
+      padding: 14px 26px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 26px rgba(255, 0, 0, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .popup.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="kgyc.jpg" alt="KGYC Logo" class="logo">
+
+    <h1>KGYC</h1>
+
+    <p>
+      Kerala Gaming YouTubers Community
+    </p>
+
+    <div class="status">COMING SOON</div>
+
+    <a class="btn" href="https://instagram.com/kgyc.official" target="_blank">
+      Follow on Instagram
+    </a>
+
+    <a class="btn secondary" href="#" onclick="showPopup()">
+      KSL Season 1
+    </a>
+
+    <div class="tag">
+      not just a community
+    </div>
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+    Registration not started
+  </div>
+
+  <script>
+    function showPopup() {
+      const popup = document.getElementById("popup");
+      popup.classList.add("show");
+
+      setTimeout(() => {
+        popup.classList.remove("show");
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
