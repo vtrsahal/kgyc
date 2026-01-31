@@ -98,7 +98,6 @@ body {
   color: #fff;
   background: linear-gradient(135deg, #ff1a1a, #b30000);
   box-shadow: 0 0 26px rgba(255,0,0,0.55);
-  cursor: pointer;
 }
 
 .back {
@@ -108,26 +107,6 @@ body {
   font-size: 0.85rem;
   color: var(--gray);
   text-decoration: none;
-}
-
-/* POPUP */
-.popup {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  border-left: 4px solid var(--red);
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.popup.show {
-  opacity: 1;
 }
 </style>
 </head>
@@ -149,26 +128,14 @@ body {
   </div>
 
   <!-- APPLY BUTTON -->
-  <div class="apply-btn" onclick="showUnderDev()">
-    APPLY AS CREATOR
-  </div>
+  <a class="apply-btn" href="apply2.html">
+    Apply as Creator
+  </a>
 
   <a class="back" href="index.html">← Back to Home</a>
 
 </div>
 
-<!-- POPUP -->
-<div id="devPopup" class="popup">
-  UNDER DEVELOPMENT
-</div>
-
-<script>
-function showUnderDev() {
-  const p = document.getElementById("devPopup");
-  p.classList.add("show");
-  setTimeout(() => p.classList.remove("show"), 3000);
-}
-</script>
-
 </body>
 </html>
+
