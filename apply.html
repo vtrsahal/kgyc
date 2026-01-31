@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apply as Creator — KGYC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+}
+
+.card {
+  background: #0d0d0d;
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 22px;
+  letter-spacing: 1px;
+}
+
+input, button {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+}
+
+input {
+  background: #111;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+button {
+  background: #d40000;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.note {
+  font-size: 0.75rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <h2>Apply as Creator</h2>
+
+    <!-- FORM START -->
+    <form action="https://formsubmit.co/kgycofficial@gmail.com" method="POST">
+
+      <!-- FormSubmit settings -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="thanks.html">
+
+      <input type="text" name="Channel Name" placeholder="YouTube Channel Name" required>
+
+      <input type="url" name="YouTube Link" placeholder="YouTube Channel Link" required>
+
+      <input type="url" name="Instagram Link" placeholder="Instagram Profile Link" required>
+
+      <input type="text" name="Subscriber Count" placeholder="Subscriber Count (example: 7.3K)" required>
+
+      <button type="submit">Submit Application</button>
+
+    </form>
+    <!-- FORM END -->
+
+    <div class="note">
+      Applications are reviewed manually by KGYC admins
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
