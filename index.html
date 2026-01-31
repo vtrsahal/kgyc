@@ -158,8 +158,12 @@ h1 {
       </button>
 
       <a class="btn secondary" href="creators.html">
-        CREATORS
+        MONETIZED CREATORS
       </a>
+
+      <button class="btn secondary" onclick="showUnderDev()">
+        NON MONETIZED CREATORS
+      </button>
     </div>
 
     <div class="footer">
@@ -169,14 +173,24 @@ h1 {
   </div>
 </div>
 
-<!-- POPUP -->
+<!-- POPUPS -->
 <div id="kslPopup" class="popup">
   Registration not started
+</div>
+
+<div id="devPopup" class="popup">
+  UNDER DEVELOPMENT
 </div>
 
 <script>
 function showKSL() {
   const p = document.getElementById("kslPopup");
+  p.classList.add("show");
+  setTimeout(() => p.classList.remove("show"), 3000);
+}
+
+function showUnderDev() {
+  const p = document.getElementById("devPopup");
   p.classList.add("show");
   setTimeout(() => p.classList.remove("show"), 3000);
 }
