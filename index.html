@@ -23,6 +23,108 @@ body {
   background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
   font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   color: #fff;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* MENU ICON */
+.menu-btn {
+  width: 28px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #0d0d0d;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.show {
+  left: 0;
+}
+
+.sidebar h2 {
+  margin-top: 10px;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar a:hover {
+  color: var(--red);
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 998;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* MAIN CONTENT */
+.main {
+  padding-top: 56px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,6 +228,7 @@ h1 {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
+  z-index: 1001;
 }
 
 .popup.show {
@@ -136,40 +239,66 @@ h1 {
 
 <body>
 
-<div class="wrapper">
-  <div class="card">
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-text">KGYC</div>
+  <div class="menu-btn" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
 
-    <img src="kgyc.jpg" alt="KGYC Logo" class="logo">
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+  <h2>MENU</h2>
+  <a href="index.html">Home</a>
+  <a href="https://instagram.com/kgyc.official" target="_blank">Instagram</a>
+  <a href="creators.html">Monetized Creators</a>
+  <a href="nonmonetized.html">Non Monetized Creators</a>
+  <a href="#" onclick="showKSL(); closeMenu(); return false;">KSL Season 1</a>
+</div>
 
-    <h1>KGYC</h1>
-    <div class="subtitle">Kerala Gaming YouTubers Community</div>
+<!-- OVERLAY -->
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
-    <div class="divider"></div>
+<!-- MAIN CONTENT -->
+<div class="main">
+  <div class="wrapper">
+    <div class="card">
 
-    <div class="status">OFFICIAL LAUNCH SOON</div>
+      <img src="kgyc.jpg" alt="KGYC Logo" class="logo">
 
-    <div class="buttons">
-      <a class="btn" href="https://instagram.com/kgyc.official" target="_blank">
-        Follow on Instagram
-      </a>
+      <h1>KGYC</h1>
+      <div class="subtitle">Kerala Gaming YouTubers Community</div>
 
-      <button class="btn secondary" onclick="showKSL()">
-        KSL Season 1
-      </button>
+      <div class="divider"></div>
 
-      <a class="btn secondary" href="creators.html">
-        MONETIZED CREATORS
-      </a>
+      <div class="status">OFFICIAL LAUNCH SOON</div>
 
-      <a class="btn secondary" href="nonmonetized.html">
-        NON MONETIZED CREATORS
-      </a>
+      <div class="buttons">
+        <a class="btn" href="https://instagram.com/kgyc.official" target="_blank">
+          Follow on Instagram
+        </a>
+
+        <button class="btn secondary" onclick="showKSL()">
+          KSL Season 1
+        </button>
+
+        <a class="btn secondary" href="creators.html">
+          MONETIZED CREATORS
+        </a>
+
+        <a class="btn secondary" href="nonmonetized.html">
+          NON MONETIZED CREATORS
+        </a>
+      </div>
+
+      <div class="footer">
+        powered by youtubers of kerala
+      </div>
+
     </div>
-
-    <div class="footer">
-      powered by youtubers of kerala
-    </div>
-
   </div>
 </div>
 
@@ -179,7 +308,18 @@ h1 {
 </div>
 
 <script>
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("show");
+  document.getElementById("overlay").classList.toggle("show");
+}
+
+function closeMenu() {
+  document.getElementById("sidebar").classList.remove("show");
+  document.getElementById("overlay").classList.remove("show");
+}
+
 function showKSL() {
+  closeMenu();
   const p = document.getElementById("kslPopup");
   p.classList.add("show");
   setTimeout(() => p.classList.remove("show"), 3000);
@@ -188,3 +328,4 @@ function showKSL() {
 
 </body>
 </html>
+
