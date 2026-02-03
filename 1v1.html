@@ -14,18 +14,14 @@
 
 * {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
-  font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-family: system-ui, Arial, sans-serif;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* HEADER */
@@ -57,102 +53,100 @@ body {
 
 /* MAIN */
 .main {
-  padding-top: 56px;
+  padding-top: 70px;
   width: 100%;
   max-width: 420px;
-  padding: 80px 22px 28px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 20px;
 }
 
 .card {
   background: #0d0d0d;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 18px;
-  padding: 28px 22px;
+  padding: 20px;
   text-align: center;
 }
 
+/* TEXT */
 h1 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   letter-spacing: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .subtitle {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--gray);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .divider {
   width: 60px;
   height: 3px;
   background: var(--red);
-  margin: 0 auto 20px;
+  margin: 0 auto 18px;
 }
 
-/* FORM */
+/* INPUT & BUTTON */
 input {
   width: 100%;
   padding: 14px;
   border-radius: 10px;
   border: none;
   outline: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
   background: #111;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .btn {
-  display: block;
   width: 100%;
-  padding: 12px 0;
+  padding: 13px;
   border-radius: 10px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #fff;
-  background: var(--red);
   border: none;
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: transform 0.1s ease;
 }
 
-.btn:active {
-  transform: scale(0.97);
-}
-
-/* WAITING SCREEN */
+/* WAITING */
 .waiting {
   display: none;
-  text-align: center;
 }
 
-.waiting p {
-  margin-top: 16px;
-  font-size: 0.9rem;
-  color: var(--gray);
-}
-
-/* CHAT UI */
+/* CHAT */
 .chat {
   display: none;
+  text-align: left;
+}
+
+.timer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 10px;
 }
 
 .chat-box {
   background: #111;
   border-radius: 12px;
-  padding: 14px;
-  height: 320px;
+  padding: 12px;
+  height: 340px;
   overflow-y: auto;
-  margin-bottom: 12px;
-  text-align: left;
   font-size: 0.95rem;
+  margin-bottom: 10px;
 }
 
 .chat-message {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  word-wrap: break-word;
 }
 
 .chat-message.me {
@@ -160,37 +154,23 @@ input {
   color: #ff4d4d;
 }
 
-.timer {
-  font-size: 0.85rem;
-  color: var(--gray);
-  margin-bottom: 10px;
-}
-
-/* INPUT ROW */
-.chat-input {
+/* CHAT INPUT BAR */
+.chat-bar {
   display: flex;
   gap: 8px;
-  align-items: center;
 }
 
-.chat-input input {
+.chat-bar input {
   flex: 1;
-  padding: 12px;
+  margin: 0;
   height: 44px;
-  font-size: 0.95rem;
-  border-radius: 10px;
-  background: #111;
-  color: #fff;
-  border: none;
-  outline: none;
 }
 
-.chat-input button {
-  width: 64px;
-  padding: 0;
+.chat-bar button {
+  width: 70px;
   height: 44px;
-  border-radius: 10px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  padding: 0;
 }
 </style>
 </head>
@@ -214,7 +194,7 @@ input {
       <div class="subtitle">Enter your UID to find a random opponent</div>
       <div class="divider"></div>
 
-      <input type="text" id="uidInput" placeholder="Enter your UID" required>
+      <input type="text" id="uidInput" placeholder="Enter your UID">
 
       <button class="btn" onclick="startMatching()">Find Opponent</button>
     </div>
@@ -224,7 +204,7 @@ input {
       <h1>SEARCHING...</h1>
       <div class="subtitle">Waiting for another player</div>
       <div class="divider"></div>
-      <p>Please wait, matching you with a random player.</p>
+      <p style="color: var(--gray);">Please wait, matching you with a random player.</p>
     </div>
 
     <!-- CHAT SCREEN -->
@@ -239,8 +219,8 @@ input {
         <div class="chat-message"><strong>System:</strong> You are now connected!</div>
       </div>
 
-      <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="Type your message here...">
+      <div class="chat-bar">
+        <input type="text" id="chatInput" placeholder="Type your message...">
         <button class="btn" onclick="sendMessage()">Send</button>
       </div>
     </div>
