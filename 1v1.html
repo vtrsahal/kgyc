@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KGYC — 1v1 Matchmaking</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --red: #d40000;
+  --black: #0a0a0a;
+  --gray: #9a9a9a;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+  font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.back-btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* MAIN */
+.main {
+  padding-top: 56px;
+  width: 100%;
+  max-width: 420px;
+  padding: 80px 22px 28px;
+}
+
+.card {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--red);
+  margin: 0 auto 24px;
+}
+
+/* FORM */
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: #111;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* WAITING SCREEN */
+.waiting {
+  display: none;
+  text-align: center;
+}
+
+.waiting p {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+/* CHAT UI */
+.chat {
+  display: none;
+}
+
+.chat-box {
+  background: #111;
+  border-radius: 12px;
+  padding: 14px;
+  height: 260px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.chat-message {
+  margin-bottom: 8px;
+}
+
+.chat-message.me {
+  text-align: right;
+  color: #ff4d4d;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.timer {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a href="index.html" class="back-btn">← Back</a>
+  <div class="logo-text">KGYC</div>
+  <div></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="card">
+
+    <!-- JOIN SCREEN -->
+    <div id="joinScreen">
+      <h1>1V1 MATCHMAKING</h1>
+      <div class="subtitle">Enter your UID to find a random opponent</div>
+      <div class="divider"></div>
+
+      <input type="text" id="uidInput" placeholder="Enter your UID" required>
+
+      <button class="btn" onclick="startMatching()">Find Opponent</button>
+    </div>
+
+    <!-- WAITING SCREEN -->
+    <div id="waitingScreen" class="waiting">
+      <h1>SEARCHING...</h1>
+      <div class="subtitle">Waiting for another player</div>
+      <div class="divider"></div>
+      <p>Please wait, matching you with a random player.</p>
+    </div>
+
+    <!-- CHAT SCREEN -->
+    <div id="chatScreen" class="chat">
+      <h1>MATCH FOUND</h1>
+      <div class="subtitle">Chat and share room ID</div>
+      <div class="divider"></div>
+
+      <div class="timer" id="timer">Time left: 05:00</div>
+
+      <div class="chat-box" id="chatBox">
+        <div class="chat-message"><strong>System:</strong> You are now connected!</div>
+      </div>
+
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button class="btn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function startMatching() {
+  document.getElementById("joinScreen").style.display = "none";
+  document.getElementById("waitingScreen").style.display = "block";
+
+  // Demo only — real matchmaking comes later
+  setTimeout(() => {
+    document.getElementById("waitingScreen").style.display = "none";
+    document.getElementById("chatScreen").style.display = "block";
+    startTimer(5 * 60);
+  }, 3000);
+}
+
+function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatBox = document.getElementById("chatBox");
+  const msgDiv = document.createElement("div");
+  msgDiv.className = "chat-message me";
+  msgDiv.textContent = message;
+  chatBox.appendChild(msgDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  input.value = "";
+}
+
+function startTimer(seconds) {
+  let timeLeft = seconds;
+  const timerEl = document.getElementById("timer");
+
+  setInterval(() => {
+    const mins = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+    const secs = String(timeLeft % 60).padStart(2, "0");
+    timerEl.textContent = `Time left: ${mins}:${secs}`;
+
+    timeLeft--;
+    if (timeLeft < 0) {
+      timerEl.textContent = "Session ended";
+    }
+  }, 1000);
+}
+</script>
+
+</body>
+</html>
